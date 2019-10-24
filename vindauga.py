@@ -9,6 +9,8 @@ def main():
     print("                                                 Vindauga                                                \n")
     input("Press Enter to continue.")
     print('\n')
+    users_name = input("What is your name: ")
+    
     # Sets player to the starting location
     location = "Meadow"
     # Player's score starts at 0
@@ -27,8 +29,9 @@ You see a worn path that leads to a few huts not too far off in the distance and
     print('\n')
     # Lines 29-52 describe the player's progress in the village
     print("""Upon arriving at the village, you see a sign with symbols from a foreign language. A tall, middle-aged 
-man walks by and you decide to ask him some questions. 'Well hello there! You must be new here.' You nod politely 
-and ask him where you are. 'The name of the village is Vindauga. We have a lot to offer, but we are not nearly as 
+man walks by and you decide to ask him some questions. 'Well hello there! You must be new here. What is your name?'""")
+    users_name = input("Enter your name: ")
+    print("It is a pleasure to meet you,", users_name, """You thank him for welcoming you and ask him where you are. 'The name of the village is Vindauga. We have a lot to offer, but we are not nearly as 
 impressive as we used to be,' he says with a sigh. You ask him what happened, thinking that it may give you some 
 clues as to why you are there. 'About three months ago, on a warm and sunny day, a man wearing a black cloak that 
 partially covered a long scar on his face came to Vindauga,' the villager began. 'He asked to see our eldest 
@@ -63,7 +66,7 @@ it lunges at you with its long claws and full set of razor-like teeth. You figur
 camp out for the night as there will likely be more beasts hunting. You spot a cave not too far up and quickly 
 climb towards it. Inside, you find a man not much older than yourself sitting by a fire. When he notices you, 
 he quickly reaches for his spear and points it at you. 'Who are you and what do you want?' he says in a menacing 
-tone. You tell him that you are on a mission to save Mother Agatha of Vindauga from the stranger who abducted 
+tone. I am,""", users_name, """and I am on a mission to save Mother Agatha of Vindauga from the stranger who abducted 
 her. 'Oh, so am I,' he says, lowering his spear. You walk over and sit down across from him, the flames of the 
 fire waving in between. 'My name’s Svend. About a week ago, the Council sent me and four others to find Mother 
 Agatha. I was already reluctant because if all the people who went before me could not find her, nevermind make 
@@ -114,8 +117,8 @@ entrance. You and Svend sneak up behind them and knock each of them out with a s
     print('\n')
     # Lines 116-141 describe the player's progress in the final stage of the game
     print("""Inside the structure, there is a prison cell holding an old, yet majestic, woman dressed in all black. 
-She must be Mother Agatha, you thought. You and Svend hurry over to her to let her know that she was saved. But 
-rather than being delighted, she says in a worried tone 'You precious younglings must head back to Vindauga 
+She must be Mother Agatha, you thought. You and Svend hurry over to her cell. But 
+rather than being delighted, she says in a worried tone 'You precious younglings, what are your names?'""", "My name is '" + users_name + """and this is Svend. We are here to save you Mother Agatha.' 'You must head back to Vindauga 
 immediately. If Nero sees you, he will kill both of you without hesitation.' Before you could ask who Nero is, 
 a man in a pitch-black cloak walks through the door. A long scar running across his face is partially covered by 
 the hood of his cloak, just like how the villager had described it to you. 'It’s too late now Agatha, 
