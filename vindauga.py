@@ -1,6 +1,6 @@
 # Introduction to Programming
-# Authors: Harrison Zheng and Jeremiah Furia
-# Date: 9/24/2019
+# Authors: Harrison Zheng and Will Dye and Brendan Pacheco
+# Date: 10/23/2019
 # Project 1: This is a text based adventure game.
 
 
@@ -94,48 +94,55 @@ to see Svend running towards you. 'You were gone for so long, I knew you must ha
 didn’t come a second too early.' You and Svend eventually find a safe spot to build a makeshift tent and wait out 
 the night. \n""")
     input("Press Enter to continue.")
-    # Sets player to the fifth and final location in the game
+    # Sets player to the fifth location in the game
     location = "Settlement"
     score = score + 5
     print('\n')
-    # Lines 102-134 describe the last stage of the game's story
+    # Lines 102-109 describe the player's progress at the settlement
     print("""The two of you spend the next morning trying to find a way out of the forest. You constantly scan the 
 trees, making sure that there are no monsters trying to kill you or Svend. Soon, you guys come across some 
 footprints. You suspect that there are other humans nearby and suggest that you guys head in the direction the 
 tracks are pointed. The two of you walk for another two miles and see that there is indeed a settlement with 
-inhabitants. There is a strange, dark aura around the largest structure and you thought that this must be where 
-the stranger is hiding Mother Agatha. You and Svend slowly approach the structure. There is a pair of guards at 
-the entrance, but the two of you have no trouble taking them out. Inside the structure, there is a prison cell 
-holding an old, yet majestic, woman dressed in all black. She must be Mother Agatha, you thought. You and Svend 
-hurry over to her to let her know that she was saved. But rather than being delighted, she says in a worried tone 
-'You precious younglings must head back to Vindauga immediately. If Nero sees you, he will kill both of you 
-without hesitation.' Before you could ask who Nero is, a man in a pitch-black cloak walks through the door. A 
-long scar running across his face is partially covered by the hood of his cloak, just like how the villager had 
-described it to you. 'It’s too late now Agatha, these two kids are already dead to me,' he says in a scratchy 
-voice. Nero opens his big wings and blasts into the air before diving down at you and Svend. You raise your 
-shield to block the strike, but the sheer force of the impact knocks you to the ground. Svend tries to stab at 
-him with his spear, but Nero’s reactions are too quick for him and he yanks the spear out of Svend’s hands and 
-snaps it in half. You and Svend begin inching backward, hoping to buy some time to come up with a last-minute 
-plan. 'I must say I am impressed. The only other time someone did not die on my first blow, they gave me this.' 
-He points to the scar on his face. 'Once I’m done with you rascals, I will have enough souls to extract the 
-source of Agatha’s powers. With it, I, Nero the Soulreaper, will take over this world and spare none who disobey me.' 
-You hang your head in defeat but notice then that your shield is glowing. You look over to Mother Agatha and 
-she gives you a look of encouragement. Suddenly, you knew what you had to do. Nero raises his arm and 
-concentrates his dark energy into his hand. 'Say goodbye fools!' As he sends a beam your way, you leap up and 
-charge at him, holding the glowing shield in front of your body and your sword behind it. The shield has no 
-problem dispersing the beam and once you are in reach, you thrust your sword into Nero’s chest. 'What? How could 
-I have failed?' he utters as he collapses to the ground and disintegrates into thousands of feathers. You and 
-Svend break the lock on Mother Agatha’s cell door. 'That was amazing! You two just saved the world!' says Mother 
-Agatha as she steps out of her cell. You thank her and ask if she might know anything about getting back to your 
-world. 'Ah yes, I know just the spell.' You are filled with joy, but then you realize it means leaving this world 
-behind as well as Svend. 'Don’t worry about me. Just make sure you come back often to visit. I’ll need you to 
-back me up when I tell my friends about his wild journey.' Svend says with tears at the corners of his eyes. The 
-two of you embrace as Mother Agatha chants a long line of phrases. A blinding white beam of light comes down from 
-the sky and lifts you away. \n""")
+inhabitants. In the center of it sits the largest structure; an old barnhouse with a strange, dark aura around 
+it. You thought to yourself that this must be where the stranger is hiding Mother Agatha. You and Svend slowly 
+approach the structure. A pair of guards wearing bird-like masks and holding long spears stand in front of the 
+entrance. You and Svend sneak up behind them and knock each of them out with a swift blow to the head. \n""")
+    input("Press Enter to continue.")
+    # Sets player to the sixth and final location in the game
+    location = "Battleground"
+    score = score + 5
+    print('\n')
+    # Lines 116-141 describe the player's progress in the final stage of the game
+    print("""Inside the structure, there is a prison cell holding an old, yet majestic, woman dressed in all black. 
+She must be Mother Agatha, you thought. You and Svend hurry over to her to let her know that she was saved. But 
+rather than being delighted, she says in a worried tone 'You precious younglings must head back to Vindauga 
+immediately. If Nero sees you, he will kill both of you without hesitation.' Before you could ask who Nero is, 
+a man in a pitch-black cloak walks through the door. A long scar running across his face is partially covered by 
+the hood of his cloak, just like how the villager had described it to you. 'It’s too late now Agatha, 
+these two kids are already dead to me,' he says in a scratchy voice. Nero opens his big wings and blasts into the 
+air before diving down at you and Svend. You raise your shield to block the strike, but the sheer force of the 
+impact knocks you to the ground. Svend tries to stab at him with his spear, but Nero’s reactions are too quick 
+for him and he yanks the spear out of Svend’s hands and snaps it in half. You and Svend begin inching backward, 
+hoping to buy some time to come up with a last-minute plan. 'I must say I am impressed. The only other time 
+someone did not die on my first blow, they gave me this.' He points to the scar on his face. 'Once I’m done with 
+you rascals, I will have enough souls to extract the source of Agatha’s powers. With it, I, Nero the Soulreaper, 
+will take over this world and spare none who disobey me.' You hang your head in defeat but notice then that your 
+shield is glowing. You look over to Mother Agatha and she gives you a look of encouragement. Suddenly, 
+you knew what you had to do. Nero raises his arm and concentrates his dark energy into his hand. 'Say goodbye 
+fools!' As he sends a beam your way, you leap up and charge at him, holding the glowing shield in front of your 
+body and your sword behind it. The shield has no problem dispersing the beam and once you are in reach, 
+you thrust your sword into Nero’s chest. 'What? How could I have failed?' he utters as he collapses to the ground 
+and disintegrates into thousands of feathers. You and Svend break the lock on Mother Agatha’s cell door. 'That 
+was amazing! You two just saved the world!' says Mother Agatha as she steps out of her cell. You thank her and 
+ask if she might know anything about getting back to your world. 'Ah yes, I know just the spell.' You are filled 
+with joy, but then you realize it means leaving this world behind as well as Svend. 'Don’t worry about me. Just 
+make sure you come back often to visit. I’ll need you to back me up when I tell my friends about his wild 
+journey.' Svend says with tears at the corners of his eyes. The two of you embrace as Mother Agatha chants a long 
+line of phrases. A blinding white beam of light comes down from the sky and lifts you away. \n""")
     input("Press Enter to continue.")
     score = score + 5
     print('\n')
-    # Lines 139-142 makeup the epilogue
+    # Lines 146-149 makeup the epilogue
     print("""When you wake up, you are sitting in your chair in front of your computer. It is now dark outside, 
 but according to the clock, you have only been gone for a few hours. Your monitor is showing the start screen of 
 Vindauga but you know that you have gone on enough adventures for one day. You eject the disc and put the game 
@@ -144,8 +151,8 @@ away for another day.""")
     print("                                                 The End                                                 ")
     print('\n' * 2)
     # Copyright statement
-    print("""'Vindauga' was developed by Harrison Zheng (Harrison.Zheng1@marist.edu) and Jeremiah Furia (
-Jeremiah.Furia1@marist.edu). Thank you for playing!""")
+    print("""'Vindauga' was developed by Harrison Zheng (Harrison.Zheng1@marist.edu) and Will Dye 
+(George.Dye1@marist.edu) and Brendan Pacheco (Brendan.Pacheco1@marist.edu). Thank you for playing!""")
 
 
 main()
