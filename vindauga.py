@@ -14,7 +14,7 @@ def title_intro():
     # Displays name of game
     print("                                                 Vindauga                                                \n")
     input("Press ENTER to continue. \n")
-    # Lines 18-22 tell the back story of the game
+    # Tells the back story of the game
     print("""    Today looked like it was going to be just like any other day. After listening to teachers lecture about 
     things you do not care the least about for seven and a half hours at school, you finally make it to the safe 
     haven of your room. You start up your computer and insert the game that you just got for your birthday. Suddenly, 
@@ -34,35 +34,38 @@ def main_game(location, score):
             if cmd == "WALK TO HUTS":
                 playerName = input("Enter your name: ")
                 print('\n')
-                # Lines 38-65 describe the player's progress in the village
+                # Describes the player's progress in the village
                 print("""Upon arriving at the village, you see a sign with symbols from a foreign language. A tall, 
                 middle-aged man walks by and you decide to ask him some questions. 'Well hello there! You must be new 
                 here. What is your name?' You tell him to call you""", playerName,
-                      "and ask him where you are. 'It is a pleasure to meet you", playerName + """'. The name of the 
-                village is Vindauga. We have a lot to offer here, but we are not nearly as impressive as we used to 
-                be,' he says with a sigh. You ask him what happened, thinking that it may give you some clues as to 
-                why you are there. 'About three months ago, on a warm and sunny day, a man wearing a black cloak that 
-                partially covered a long scar on his face came to Vindauga,' the villager began. 'He asked to see our 
-                eldest leader, Mother Agatha, claiming that he had an urgent message to deliver. The Council called 
-                for a meeting and there, the stranger told of how the citizens of his village had lost all sense of 
-                meaning and only someone as wise as Mother Agatha could show them the light. But she sensed that this 
-                man could not be trusted and ordered the guards to escort him out of Vindauga. As the guards marched 
-                over to the stranger, he suddenly opened his arms, unleashing a strong gust of wind and revealing a 
-                pair of large raven-like wings. Before anyone could regain their balance, he snatched Mother Agatha 
-                and flew away. Since then, the Council has been arguing over who should take her place and very 
-                little has been done to improve the lives of Vindaugans. As a result, many families, craftsmen, 
-                and merchants have left to settle elsewhere. Traders hardly ever come to Vindauga anymore either.' 
-                You ask the man where the stranger might have taken Mother Agatha, to which he responds, 'It’s likely 
-                that he brought her back to his village, which we suspect sits beyond those mountains.' He points to 
-                a mountain range about ten miles out. 'We have sent many soldiers to go look for our beloved Mother 
-                Agatha, but none have returned.' With only a hint of nervousness in your voice, you tell the man that 
-                you will find Mother Agatha and restore order. You add that it may be the only way to get back to 
-                your world. Seeing your determination, the man says 'Very well then. But before you embark on this 
-                quest, you will need some supplies.' He runs to a nearby hut and returns a moment later with a sword, 
-                a shield, and a couple of canteens filled with water. 'My father gave me this sword and this shield 
-                so that I could defend myself and all the things that I love. However, I am sure you will be doing 
-                just that in the days to come so please accept this as a humble gift.' Taking the slightly worn, 
-                yet sturdy weapons in your hands, you thank him and set a course for the mountains. \n""")
+                "and ask him where you are. 'It is a pleasure to meet you", playerName + """'. The name of the 
+                village is Vindauga. We have a lot to offer here, but we are not nearly as impressive as we used to be,' 
+                he says with a sigh. You ask him what happened, thinking that it may give you some 
+                clues as to why you are there. 'About three months ago, on a warm and sunny day, a man wearing 
+                a black cloak that partially covered a long scar on his face came to Vindauga,' the villager 
+                began. 'He asked to see our eldest leader, Mother Agatha, claiming that he had an urgent 
+                message to deliver. The Council called for a meeting and there, the stranger told of how the 
+                citizens of his village had lost all sense of meaning and only someone as wise as Mother Agatha 
+                could show them the light. But she sensed that this man could not be trusted and ordered the 
+                guards to escort him out of Vindauga. As the guards marched over to the stranger, he suddenly 
+                opened his arms, unleashing a strong gust of wind and revealing a pair of large raven-like 
+                wings. Before anyone could regain their balance, he snatched Mother Agatha and flew away. Since 
+                then, the Council has been arguing over who should take her place and very little has been done 
+                to improve the lives of Vindaugans. As a result, many families, craftsmen, and merchants have 
+                left to settle elsewhere. Traders hardly ever come to Vindauga anymore either.' You ask the man 
+                where the stranger might have taken Mother Agatha, to which he responds, 'It’s likely that he 
+                brought her back to his village, which we suspect sits beyond those mountains.' He points to a 
+                mountain range about ten miles out. 'We have sent many soldiers to go look for our beloved 
+                Mother Agatha, but none have returned.' With only a hint of nervousness in your voice, 
+                you tell the man that you will find Mother Agatha and restore order. You add that it may be the 
+                only way to get back to your world. Seeing your determination, the man says 'Very well then. 
+                But before you embark on this quest, you will need some supplies.' He runs to a nearby hut and 
+                returns moments later with a sword, a shield, and a brown rucksack. Inside it are a couple of 
+                canteens filled with water and half a loaf of bread. 'My father gave me this sword and this 
+                shield so that I could defend myself and all the things that I love. However, I am sure you 
+                will be doing just that in the days to come so please accept this as a humble gift.' Taking the 
+                rucksack and the slightly worn, yet sturdy weapons in your hands, you thank him and set a 
+                course for the mountains. \n""")
                 location_score("MEADOW", True, 5)
             elif cmd == "HELP":
                 print('\n')
@@ -83,7 +86,7 @@ def main_game(location, score):
         elif location == "VILLAGE":
             if cmd == "ASCEND MOUNTAINS":
                 print('\n')
-                # Lines 86-106 describe player's progress in the mountains
+                # Describes the player's progress in the mountains
                 print("""You reach the foot of the mountains a few hours later as the sun begins to set. Only then do 
                 you realize how tall the mountains are. As you start climbing, you get the feeling that you are being 
                 watched. A dark figure suddenly brushes past you. You unsheathe the sword that the villager gave you 
@@ -92,7 +95,7 @@ def main_game(location, score):
                 beasts hunting. You spot a cave not too far up and quickly climb towards it. Inside, you find a man 
                 not much older than yourself sitting by a fire. When he notices you, he quickly reaches for his spear 
                 and points it at you. 'Who are you and what do you want?' he says in a menacing tone.""")
-                input("My name is (Enter your name) ")
+                input("My name is (enter your name) ")
                 print("""You tell him that you are on a mission to save Mother Agatha of Vindauga from the stranger 
                 who abducted her. 'Oh, so am I,' he says, lowering his spear. You walk over and sit down across from 
                 him, the flames of the fire waving in between. 'My name’s Svend. About a week ago, the Council sent 
@@ -124,7 +127,7 @@ def main_game(location, score):
         elif location == "MOUNTAINS":
             if cmd == "REST IN CAVE":
                 print('\n')
-                # Lines 126-141 describe player's progress in the forest
+                # Describes the player's progress in the forest
                 print("""That night, you and Svend take turns sleeping and guarding the cave. The next morning, 
                 you two reach the summit of the mountain. From there, you see a vast expanse of trees stretching out 
                 into the distance. 'It looks like we still have a long way to go,' says Svend. The descent turns out 
@@ -160,7 +163,7 @@ def main_game(location, score):
         elif location == "FOREST":
             if cmd == "REST IN TENT":
                 print('\n')
-                # Lines 161-169 describe the player's progress at the settlement
+                # Describes the player's progress at the settlement
                 print("""The two of you spend the next morning trying to find a way out of the forest. You constantly 
                 scan the trees, making sure that there are no monsters trying to kill you or Svend. Soon, 
                 you guys come across some footprints. You suspect that there are other humans nearby and suggest that 
@@ -189,13 +192,13 @@ def main_game(location, score):
         elif location == "SETTLEMENT":
             if cmd == "ENTER BARNHOUSE":
                 print('\n')
-                # Lines 189-220 describe the player's progress in the final stage of the game
+                # Describes the player's progress in the final stage of the game
                 print("""Inside the structure, there is a prison cell holding an old, yet majestic, woman wearing a 
                 black gown. She must be Mother Agatha, you thought. You and Svend hurry over to let her know that she 
                 was saved. But rather than being delighted, she asks in a worried tone, 'You precious younglings, 
                 what are your names?'. 'My name is Svend, your Highness,' Svend replied, trying to hide his 
                 anxiousness.""")
-                playerName = input("Your Highness, please call me (Enter your name) ")
+                playerName = input("Your Highness, please call me (enter your name) ")
                 print("'Head back to Vindauga immediately, Svend and", playerName + """'. If Nero sees you, he will 
                 kill both of you without hesitation.' Before you could ask who Nero is, a man in a pitch-black cloak 
                 walks through the door. A long scar running across his face is partially covered by the hood of his 
@@ -205,7 +208,7 @@ def main_game(location, score):
                 force of the impact knocks you to the ground. Svend tries to stab at him with his spear, but Nero’s 
                 reactions are too quick for him and he yanks the spear out of Svend’s hands and snaps it in half. You 
                 and Svend begin inching backward, hoping to buy some time to come up with a last-minute plan. 'I must 
-                say I am impressed. The only other time someone did not die on my first blow, they gave me this.' He 
+                say, I am impressed. The only other time someone did not die on my first blow, they gave me this.' He 
                 points to the scar on his face. 'Once I’m done with you rascals, I will have enough souls to extract 
                 the source of Agatha’s powers. With it, I, Nero the Soulreaper, will take over this world and spare 
                 none who disobey me.' You hang your head in defeat but notice then that your shield is glowing. You 
@@ -222,6 +225,7 @@ def main_game(location, score):
                 to visit. I’ll need you to back me up when I tell my friends about his wild journey.' Svend says with 
                 tears at the corners of his eyes. The two of you embrace as Mother Agatha chants a long line of 
                 phrases. A blinding white beam of light comes down from the sky and lifts you away. \n""")
+                input("Press ENTER to continue. \n")
                 ending_copyright()
                 # Exits out of the loop and game
                 raise SystemExit
@@ -269,17 +273,16 @@ def location_score(location, firstVisit, score):
 
 
 def ending_copyright():
-    print('\n')
-    # Lines 269-274 make up the epilogue
+    # Displays the epilogue
     print("""   When you wake up, you are sitting in your chair in front of your computer. It is now dark outside, 
     but according to the clock, you have only been gone for a few hours. Your monitor is showing the start screen of 
     Vindauga but you know that you have gone on enough adventures for one day. You eject the disc and put the game 
     away for another day. \n""")
     print("""                                                 The End                                                     
                                                                                                      Final Score: 30""")
-    print('\n' * 2)
-    print("""'Vindauga' was developed by Harrison Zheng (Harrison.Zheng1@marist.edu) and Will Dye 
-    (George.Dye1@marist.edu) and Brendan Pacheco (Brendan.Pacheco1@marist.edu). Thank you for playing!""")
+    print('\n')
+    print("""'Vindauga' was developed by Harrison Zheng (Harrison.Zheng1@marist.edu), Will Dye 
+    (George.Dye1@marist.edu), and Brendan Pacheco (Brendan.Pacheco1@marist.edu). Thank you for playing!""")
     return
 
 
