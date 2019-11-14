@@ -15,6 +15,7 @@ def title_intro():
     # Displays name of the game
     print("                                                 Vindauga                                                \n")
     input("Press ENTER to continue. \n")
+    print("Make sure to use 50 moves or less to reach the end of the game in order to win it!")
     # Tells the back story of the game and the player's progress in the meadow
     print("""    Today looked like it was going to be just like any other day. After listening to teachers lecture about 
     things you do not care the least about for seven and a half hours at school, you finally make it to the safe 
@@ -26,8 +27,7 @@ def title_intro():
 
 def main_game(location, score):
     print("Your current location is", location)
-    print("Your current score is", score)
-    while True:
+    while moves() <= 50:
         # Contains every location in the game
         location_list = ["MEADOW", "VILLAGE", "MOUNTAINS", "FOREST", "BUSHES", "CREEK", "SETTLEMENT", "BARNHOUSE"]
         cmd = input("Enter a command (enter HELP to see a list of valid commands): ")
@@ -41,7 +41,7 @@ def main_game(location, score):
                 print("""Upon arriving at the village, you see a sign with symbols from a foreign language. A tall, 
                 middle-aged man walks by and you decide to ask him some questions. 'Well hello there! You must be new 
                 here. What is your name?' You tell him to call you""", playerName,
-                "and ask him where you are. 'It is a pleasure to meet you", playerName + """'. The name of the 
+                      "and ask him where you are. 'It is a pleasure to meet you", playerName + """'. The name of the 
                 village is Vindauga. We have a lot to offer here, but we are not nearly as impressive as we used to be,' 
                 he says with a sigh. You ask him what happened, thinking that it may give you some 
                 clues as to why you are there. 'About three months ago, on a warm and sunny day, a man wearing 
@@ -74,6 +74,12 @@ def main_game(location, score):
                 go_to(location_list[1], firstVisitList[-1], 5)
             elif cmd == "HELP":
                 list_commands()
+                continue
+            elif cmd == "MAP":
+                game_map()
+                continue
+            elif cmd == "POINTS":
+                print("Your current score is", score, '\n')
                 continue
             elif cmd == "QUIT":
                 early_exit(score)
@@ -112,6 +118,12 @@ def main_game(location, score):
             elif cmd == "HELP":
                 list_commands()
                 continue
+            elif cmd == "MAP":
+                game_map()
+                continue
+            elif cmd == "POINTS":
+                print("Your current score is", score, '\n')
+                continue
             elif cmd == "QUIT":
                 early_exit(score)
                 raise SystemExit
@@ -143,6 +155,12 @@ def main_game(location, score):
             elif cmd == "HELP":
                 list_commands()
                 continue
+            elif cmd == "MAP":
+                game_map()
+                continue
+            elif cmd == "POINTS":
+                print("Your current score is", score, '\n')
+                continue
             elif cmd == "QUIT":
                 early_exit(score)
                 raise SystemExit
@@ -160,6 +178,12 @@ def main_game(location, score):
                 go_to(location_list[4], firstVisitList[-1], 5)
             elif cmd == "HELP":
                 list_commands()
+                continue
+            elif cmd == "MAP":
+                game_map()
+                continue
+            elif cmd == "POINTS":
+                print("Your current score is", score, '\n')
                 continue
             elif cmd == "QUIT":
                 early_exit(score)
@@ -179,6 +203,12 @@ def main_game(location, score):
                 go_to(location_list[5], firstVisitList[-1], 5)
             elif cmd == "HELP":
                 list_commands()
+                continue
+            elif cmd == "MAP":
+                game_map()
+                continue
+            elif cmd == "POINTS":
+                print("Your current score is", score, '\n')
                 continue
             elif cmd == "QUIT":
                 early_exit(score)
@@ -203,6 +233,12 @@ def main_game(location, score):
                 go_to(location_list[6], firstVisitList[-1], 5)
             elif cmd == "HELP":
                 list_commands()
+                continue
+            elif cmd == "MAP":
+                game_map()
+                continue
+            elif cmd == "POINTS":
+                print("Your current score is", score, '\n')
                 continue
             elif cmd == "QUIT":
                 early_exit(score)
@@ -252,6 +288,12 @@ def main_game(location, score):
             elif cmd == "HELP":
                 list_commands()
                 continue
+            elif cmd == "MAP":
+                game_map()
+                continue
+            elif cmd == "POINTS":
+                print("Your current score is", score, '\n')
+                continue
             elif cmd == "QUIT":
                 early_exit(score)
                 raise SystemExit
@@ -260,6 +302,13 @@ def main_game(location, score):
                 continue
         else:
             print("Not a valid location.")
+
+
+def moves():
+    # Keeps track of how many moves the player has made
+    moves = 0
+    moves += 1
+    return moves
 
 
 def go_to(location, firstVisit, score):
@@ -298,9 +347,30 @@ def list_commands():
     # Lists all valid commands if the player enters HELP
     print('\n')
     print("""Valid commands are:\n WALK TO HUTS\n ASCEND MOUNTAINS\n REST IN CAVE\n LEAVE TENT\n KEEP WALKING 
- WALK ALONG CREEK\n ENTER BARNHOUSE\n QUIT\n""")
+ WALK ALONG CREEK\n ENTER BARNHOUSE\n MAP\n POINTS\n QUIT\n""")
     return
 
+
+def game_map():
+    # Displays a rough map of locations in the game
+    print("""                                                                                                           
+                                         /////////////  |~|  /////  __________                                                                        
+                                    ^    \\\\\\\\\\\\   |~|  \\\\  /          \                                                        
+                                     ^   ////////////   |~|  ///  |   NERO'S   |
+                                    ^    ||||||||||||   |~|  |||  | SETTLEMENT |                                                                 
+                                    ^    \\\\\\\\\\\\   |~|  \\\\  \__________/                                                       
+                                   ^      ////////////  |~|  ////////////                                                                          
+                  ++++++++++++        ^   \\\\\::::::\  |~|  \\\\\\\\\\\\                                                                              
+                  +          +      ^     /////BUSHES/  |~|  ////////////                                                                           
+                  + VINDAUGA +      ^     \\\\\::::::\  |~|  \\\\\\\\\\\\                                                                             
+                  +          +    ^       |||||||||||   |~|  ||||||||||||
+                  ++++++++++++     ^      ////////////  |~|  ////////////                                                                                                        
+                                     ^    \\\\\\\\\\\\  |~|  \\\\\\\\\\\\                                                                                                   
+     ==========                     ^     ////////////  |~|  ////////////                                                                                     
+       MEADOW                             \\\\\\\\\\\\  |~|  \\\\\\\\\\\\                                                              
+     ==========                           ////////////  |~|  ////////////                                                                                                                        
+                                                                                                        """)
+    return
 
 def early_exit(score):
     # If the player quits before finishing the game, this displays the copyright statement
