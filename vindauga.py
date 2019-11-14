@@ -28,10 +28,12 @@ def main_game(location, score):
     print("Your current location is", location)
     print("Your current score is", score)
     while True:
+        # Contains every location in the game
+        location_list = ["MEADOW", "VILLAGE", "MOUNTAINS", "FOREST", "BUSHES", "CREEK", "SETTLEMENT", "BARNHOUSE"]
         cmd = input("Enter a command (enter HELP to see a list of valid commands): ")
         # The program will still run if the user enters a correct command with lowercase letters
         cmd = cmd.upper()
-        if location == "VILLAGE":
+        if location == location_list[1]:
             if cmd == "WALK TO HUTS":
                 playerName = input("Enter your name: ")
                 print('\n')
@@ -67,17 +69,20 @@ def main_game(location, score):
                 will be doing just that in the days to come so please accept this as a humble gift.' Taking the 
                 rucksack and the slightly worn, yet sturdy weapons in your hands, you thank him and set a 
                 course for the mountains. \n""")
-                go_to("VILLAGE", True, 5)
+                # Holds a Boolean value of True for every location visited so far
+                firstVisitList = [True * 2]
+                go_to(location_list[1], firstVisitList[-1], 5)
             elif cmd == "HELP":
                 list_commands()
                 continue
             elif cmd == "QUIT":
                 early_exit(score)
+                # Exits out of the loop and game
                 raise SystemExit
             else:
                 print("Please enter the command 'WALK TO HUTS' in order to follow the storyline. \n")
                 continue
-        elif location == "MOUNTAINS":
+        elif location == location_list[2]:
             if cmd == "ASCEND MOUNTAINS":
                 print('\n')
                 # Describes the player's progress in the mountains
@@ -102,7 +107,8 @@ def main_game(location, score):
                 going on this mission and try to convince him that the whole village is counting on him. He 
                 eventually gives in, saying 'If I’m not going to do it myself, then I suppose I could at least 
                 protect the person who will.' \n""")
-                go_to("MOUNTAINS", True, 5)
+                firstVisitList = [True * 3]
+                go_to(location_list[2], firstVisitList[-1], 5)
             elif cmd == "HELP":
                 list_commands()
                 continue
@@ -112,7 +118,7 @@ def main_game(location, score):
             else:
                 print("Please enter the command 'ASCEND MOUNTAINS' in order to follow the storyline. \n")
                 continue
-        elif location == "FOREST":
+        elif location == location_list[3]:
             if cmd == "REST IN CAVE":
                 print('\n')
                 # Describes the player's progress in the forest
@@ -132,7 +138,8 @@ def main_game(location, score):
                 around to see Svend running towards you. 'You were gone for so long, I knew you must have been in 
                 trouble. Looks like I didn’t come a second too early.' You and Svend eventually find a safe spot to 
                 build a makeshift tent and wait out the night. \n""")
-                go_to("FOREST", True, 5)
+                firstVisitList = [True * 4]
+                go_to(location_list[3], firstVisitList[-1], 5)
             elif cmd == "HELP":
                 list_commands()
                 continue
@@ -142,8 +149,45 @@ def main_game(location, score):
             else:
                 print("Please enter the command 'REST IN CAVE' in order to follow the storyline. \n")
                 continue
-        elif location == "SETTLEMENT":
-            if cmd == "REST IN TENT":
+        elif location == location_list[4]:
+            if cmd == "LEAVE TENT":
+                print('\n')
+                # Describes the player's encounter with bushes growing berries
+                print("""The two of you spend the next morning trying to find a way out of the forest. You stumble 
+                upon a thicket of bushes with red berries that resemble cherries. Svend tells you that these are safe 
+                to eat, so you pick as many as you can fit in your rucksack. \n""")
+                firstVisitList = [True * 5]
+                go_to(location_list[4], firstVisitList[-1], 5)
+            elif cmd == "HELP":
+                list_commands()
+                continue
+            elif cmd == "QUIT":
+                early_exit(score)
+                raise SystemExit
+            else:
+                print("Please enter the command 'LEAVE TENT' in order to follow the storyline. \n")
+                continue
+        elif location == location_list[5]:
+            if cmd == "KEEP WALKING":
+                print('\n')
+                # Describes the player's encounter with a small stream
+                print("""You and Svend walk for about another mile before reaching a creek with cool, pristine water. 
+                What a relief, you thought. The feeling left in your mouth by those tart berries from earlier was 
+                beginning to bother you. The two of you fill up your canteens and decide to follow the creek 
+                downstream. \n""")
+                firstVisitList = [True * 6]
+                go_to(location_list[5], firstVisitList[-1], 5)
+            elif cmd == "HELP":
+                list_commands()
+                continue
+            elif cmd == "QUIT":
+                early_exit(score)
+                raise SystemExit
+            else:
+                print("Please enter the command 'KEEP WALKING' in order to follow the storyline. \n")
+                continue
+        elif location == location_list[6]:
+            if cmd == "WALK ALONG CREEK":
                 print('\n')
                 # Describes the player's progress at the settlement
                 print("""As you and Svend continue your trek through the forest, you constantly scan the trees, 
@@ -155,7 +199,8 @@ def main_game(location, score):
                 Mother Agatha. You and Svend slowly approach the structure. A pair of guards wearing bird-like masks 
                 and holding long spears stand in front of the entrance. You and Svend sneak up behind them and knock 
                 each of them out with a swift blow to the head. \n""")
-                go_to("SETTLEMENT", True, 5)
+                firstVisitList = [True * 7]
+                go_to(location_list[6], firstVisitList[-1], 5)
             elif cmd == "HELP":
                 list_commands()
                 continue
@@ -163,9 +208,9 @@ def main_game(location, score):
                 early_exit(score)
                 raise SystemExit
             else:
-                print("Please enter the command 'REST IN TENT' in order to follow the storyline. \n")
+                print("Please enter the command 'WALK ALONG CREEK' in order to follow the storyline. \n")
                 continue
-        elif location == "BARNHOUSE":
+        elif location == location_list[7]:
             if cmd == "ENTER BARNHOUSE":
                 print('\n')
                 # Describes the player's progress in the final stage of the game
@@ -203,7 +248,6 @@ def main_game(location, score):
                 phrases. A blinding white beam of light comes down from the sky and lifts you away. \n""")
                 input("Press ENTER to continue. \n")
                 ending_copyright(score)
-                # Exits out of the loop and game
                 raise SystemExit
             elif cmd == "HELP":
                 list_commands()
@@ -230,12 +274,20 @@ def go_to(location, firstVisit, score):
         newScore = score + 10
         main_game(newLocation, newScore)
     elif location == "FOREST" and firstVisit:
-        newLocation = "SETTLEMENT"
+        newLocation = "BUSHES"
         newScore = score + 15
+        main_game(newLocation, newScore)
+    elif location == "BUSHES" and firstVisit:
+        newLocation = "CREEK"
+        newScore = score + 20
+        main_game(newLocation, newScore)
+    elif location == "CREEK" and firstVisit:
+        newLocation = "SETTLEMENT"
+        newScore = score + 25
         main_game(newLocation, newScore)
     elif location == "SETTLEMENT" and firstVisit:
         newLocation = "BARNHOUSE"
-        newScore = score + 20
+        newScore = score + 30
         main_game(newLocation, newScore)
     else:
         print("You have already been to this location. \n")
@@ -245,8 +297,8 @@ def go_to(location, firstVisit, score):
 def list_commands():
     # Lists all valid commands if the player enters HELP
     print('\n')
-    print(
-        """Valid commands are:\n WALK TO HUTS\n ASCEND MOUNTAINS\n REST IN CAVE\n REST IN TENT\n ENTER BARNHOUSE\n QUIT\n""")
+    print("""Valid commands are:\n WALK TO HUTS\n ASCEND MOUNTAINS\n REST IN CAVE\n LEAVE TENT\n KEEP WALKING 
+ WALK ALONG CREEK\n ENTER BARNHOUSE\n QUIT\n""")
     return
 
 
