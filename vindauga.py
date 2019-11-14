@@ -1,36 +1,37 @@
 # Introduction to Programming
-# Authors: Harrison Zheng and Will Dye and Brendan Pacheco
-# Date: 10/27/2019
-# Project 2: This is a text based adventure game.
+# Authors: Harrison Zheng, Will Dye, and Brendan Pacheco
+# Date: 11/13/2019
+# Project 3: This is a text based adventure game.
 
 
 def main():
     title_intro()
-    # Sets player to the starting location with a score of 0
-    main_game("MEADOW", 0)
+    # Sets player's location to VILLAGE with a score of 5,
+    # since they automatically visited the MEADOW in the intro
+    main_game("VILLAGE", 5)
 
 
 def title_intro():
-    # Displays name of game
+    # Displays name of the game
     print("                                                 Vindauga                                                \n")
     input("Press ENTER to continue. \n")
-    # Tells the back story of the game
+    # Tells the back story of the game and the player's progress in the meadow
     print("""    Today looked like it was going to be just like any other day. After listening to teachers lecture about 
     things you do not care the least about for seven and a half hours at school, you finally make it to the safe 
     haven of your room. You start up your computer and insert the game that you just got for your birthday. Suddenly, 
     a blinding white light comes beaming out of your monitor. When you wake up, you find yourself lying in a meadow. 
-    You see a worn path that leads to a few huts not too far off in the distance and decide to follow it. \n""")
+    You see a worn path that leads to a few huts not too far off in the distance. \n""")
     return
 
 
 def main_game(location, score):
+    print("Your current location is", location)
+    print("Your current score is", score)
     while True:
-        print("Your current location is", location)
-        print("Your current score is", score)
         cmd = input("Enter a command (enter HELP to see a list of valid commands): ")
         # The program will still run if the user enters a correct command with lowercase letters
         cmd = cmd.upper()
-        if location == "MEADOW":
+        if location == "VILLAGE":
             if cmd == "WALK TO HUTS":
                 playerName = input("Enter your name: ")
                 print('\n')
@@ -66,24 +67,17 @@ def main_game(location, score):
                 will be doing just that in the days to come so please accept this as a humble gift.' Taking the 
                 rucksack and the slightly worn, yet sturdy weapons in your hands, you thank him and set a 
                 course for the mountains. \n""")
-                location_score("MEADOW", True, 5)
+                go_to("VILLAGE", True, 5)
             elif cmd == "HELP":
-                print('\n')
-                print(
-                    """Valid commands are:\n WALK TO HUTS\n ASCEND MOUNTAINS\n REST IN CAVE\n REST IN TENT\n ENTER BARNHOUSE\n QUIT\n""")
+                list_commands()
                 continue
             elif cmd == "QUIT":
-                print('\n')
-                # Displays the copyright statement and the player's score at the time they quit
-                print("""'Vindauga' was developed by Harrison Zheng (Harrison.Zheng1@marist.edu) and Will Dye 
-                (George.Dye1@marist.edu) and Brendan Pacheco (Brendan.Pacheco1@marist.edu). Thank you for playing!
-
-                                                                                                 Final Score:""", score)
-                return
+                early_exit(score)
+                raise SystemExit
             else:
                 print("Please enter the command 'WALK TO HUTS' in order to follow the storyline. \n")
                 continue
-        elif location == "VILLAGE":
+        elif location == "MOUNTAINS":
             if cmd == "ASCEND MOUNTAINS":
                 print('\n')
                 # Describes the player's progress in the mountains
@@ -108,23 +102,17 @@ def main_game(location, score):
                 going on this mission and try to convince him that the whole village is counting on him. He 
                 eventually gives in, saying 'If I’m not going to do it myself, then I suppose I could at least 
                 protect the person who will.' \n""")
-                location_score("VILLAGE", True, 5)
+                go_to("MOUNTAINS", True, 5)
             elif cmd == "HELP":
-                print('\n')
-                print(
-                    """Valid commands are:\n WALK TO HUTS\n ASCEND MOUNTAINS\n REST IN CAVE\n REST IN TENT\n ENTER BARNHOUSE\n QUIT\n""")
+                list_commands()
                 continue
             elif cmd == "QUIT":
-                print('\n')
-                print("""'Vindauga' was developed by Harrison Zheng (Harrison.Zheng1@marist.edu) and Will Dye 
-                (George.Dye1@marist.edu) and Brendan Pacheco (Brendan.Pacheco1@marist.edu). Thank you for playing!
-
-                                                                                                 Final Score:""", score)
-                return
+                early_exit(score)
+                raise SystemExit
             else:
                 print("Please enter the command 'ASCEND MOUNTAINS' in order to follow the storyline. \n")
                 continue
-        elif location == "MOUNTAINS":
+        elif location == "FOREST":
             if cmd == "REST IN CAVE":
                 print('\n')
                 # Describes the player's progress in the forest
@@ -144,52 +132,40 @@ def main_game(location, score):
                 around to see Svend running towards you. 'You were gone for so long, I knew you must have been in 
                 trouble. Looks like I didn’t come a second too early.' You and Svend eventually find a safe spot to 
                 build a makeshift tent and wait out the night. \n""")
-                location_score("MOUNTAINS", True, 5)
+                go_to("FOREST", True, 5)
             elif cmd == "HELP":
-                print('\n')
-                print(
-                    """Valid commands are:\n WALK TO HUTS\n ASCEND MOUNTAINS\n REST IN CAVE\n REST IN TENT\n ENTER BARNHOUSE\n QUIT\n""")
+                list_commands()
                 continue
             elif cmd == "QUIT":
-                print('\n')
-                print("""'Vindauga' was developed by Harrison Zheng (Harrison.Zheng1@marist.edu) and Will Dye 
-                (George.Dye1@marist.edu) and Brendan Pacheco (Brendan.Pacheco1@marist.edu). Thank you for playing!
-
-                                                                                                 Final Score:""", score)
-                return
+                early_exit(score)
+                raise SystemExit
             else:
                 print("Please enter the command 'REST IN CAVE' in order to follow the storyline. \n")
                 continue
-        elif location == "FOREST":
+        elif location == "SETTLEMENT":
             if cmd == "REST IN TENT":
                 print('\n')
                 # Describes the player's progress at the settlement
-                print("""The two of you spend the next morning trying to find a way out of the forest. You constantly 
-                scan the trees, making sure that there are no monsters trying to kill you or Svend. Soon, 
-                you guys come across some footprints. You suspect that there are other humans nearby and suggest that 
-                you guys head in the direction the tracks are pointed. The two of you walk for another two miles and 
-                see that there is indeed a settlement with inhabitants. In the center of it sits the largest 
-                structure; an old barnhouse with a strange, dark aura around it. You thought to yourself that this 
-                must be where the stranger is hiding Mother Agatha. You and Svend slowly approach the structure. A 
-                pair of guards wearing bird-like masks and holding long spears stand in front of the entrance. You 
-                and Svend sneak up behind them and knock each of them out with a swift blow to the head. \n""")
-                location_score("FOREST", True, 5)
+                print("""As you and Svend continue your trek through the forest, you constantly scan the trees, 
+                making sure that there are no monsters stalking either of you. Soon, the two of you come across some 
+                footprints. You suspect that there are other humans nearby and suggest heading in the direction the 
+                tracks are pointed. The two of you walk for another two miles and see that there is indeed a 
+                settlement with inhabitants. In the center of it sits the largest structure; an old barnhouse with a 
+                strange, dark aura around it. You thought to yourself that this must be where the stranger is hiding 
+                Mother Agatha. You and Svend slowly approach the structure. A pair of guards wearing bird-like masks 
+                and holding long spears stand in front of the entrance. You and Svend sneak up behind them and knock 
+                each of them out with a swift blow to the head. \n""")
+                go_to("SETTLEMENT", True, 5)
             elif cmd == "HELP":
-                print('\n')
-                print(
-                    """Valid commands are:\n WALK TO HUTS\n ASCEND MOUNTAINS\n REST IN CAVE\n REST IN TENT\n ENTER BARNHOUSE\n QUIT\n""")
+                list_commands()
                 continue
             elif cmd == "QUIT":
-                print('\n')
-                print("""'Vindauga' was developed by Harrison Zheng (Harrison.Zheng1@marist.edu) and Will Dye 
-                (George.Dye1@marist.edu) and Brendan Pacheco (Brendan.Pacheco1@marist.edu). Thank you for playing!
-
-                                                                                                 Final Score:""", score)
-                return
+                early_exit(score)
+                raise SystemExit
             else:
                 print("Please enter the command 'REST IN TENT' in order to follow the storyline. \n")
                 continue
-        elif location == "SETTLEMENT":
+        elif location == "BARNHOUSE":
             if cmd == "ENTER BARNHOUSE":
                 print('\n')
                 # Describes the player's progress in the final stage of the game
@@ -226,21 +202,15 @@ def main_game(location, score):
                 tears at the corners of his eyes. The two of you embrace as Mother Agatha chants a long line of 
                 phrases. A blinding white beam of light comes down from the sky and lifts you away. \n""")
                 input("Press ENTER to continue. \n")
-                ending_copyright()
+                ending_copyright(score)
                 # Exits out of the loop and game
                 raise SystemExit
             elif cmd == "HELP":
-                print('\n')
-                print(
-                    """Valid commands are:\n WALK TO HUTS\n ASCEND MOUNTAINS\n REST IN CAVE\n REST IN TENT\n ENTER BARNHOUSE\n QUIT\n""")
+                list_commands()
                 continue
             elif cmd == "QUIT":
-                print('\n')
-                print("""'Vindauga' was developed by Harrison Zheng (Harrison.Zheng1@marist.edu) and Will Dye 
-                (George.Dye1@marist.edu) and Brendan Pacheco (Brendan.Pacheco1@marist.edu). Thank you for playing!
-
-                                                                                                 Final Score:""", score)
-                return
+                early_exit(score)
+                raise SystemExit
             else:
                 print("Please enter the command 'ENTER BARNHOUSE' in order to follow the storyline. \n")
                 continue
@@ -248,14 +218,10 @@ def main_game(location, score):
             print("Not a valid location.")
 
 
-def location_score(location, firstVisit, score):
+def go_to(location, firstVisit, score):
     # This function handles changing the player's location and score
     # Player only gains 5 points the first time they visit a location in the game
-    if location == "MEADOW" and firstVisit:
-        newLocation = "VILLAGE"
-        newScore = score + 0
-        main_game(newLocation, newScore)
-    elif location == "VILLAGE" and firstVisit:
+    if location == "VILLAGE" and firstVisit:
         newLocation = "MOUNTAINS"
         newScore = score + 5
         main_game(newLocation, newScore)
@@ -267,19 +233,43 @@ def location_score(location, firstVisit, score):
         newLocation = "SETTLEMENT"
         newScore = score + 15
         main_game(newLocation, newScore)
+    elif location == "SETTLEMENT" and firstVisit:
+        newLocation = "BARNHOUSE"
+        newScore = score + 20
+        main_game(newLocation, newScore)
     else:
         print("You have already been to this location. \n")
     return
 
 
-def ending_copyright():
+def list_commands():
+    # Lists all valid commands if the player enters HELP
+    print('\n')
+    print(
+        """Valid commands are:\n WALK TO HUTS\n ASCEND MOUNTAINS\n REST IN CAVE\n REST IN TENT\n ENTER BARNHOUSE\n QUIT\n""")
+    return
+
+
+def early_exit(score):
+    # If the player quits before finishing the game, this displays the copyright statement
+    # and their score at the time they quit
+    print('\n')
+    print("""'Vindauga' was developed by Harrison Zheng (Harrison.Zheng1@marist.edu) and Will Dye 
+    (George.Dye1@marist.edu) and Brendan Pacheco (Brendan.Pacheco1@marist.edu). Thank you for playing!
+
+                                                                                                Final Score:""", score)
+    return
+
+
+def ending_copyright(score):
+    finalScore = score + 10
     # Displays the epilogue
     print("""   When you wake up, you are sitting in your chair in front of your computer. It is now dark outside, 
     but according to the clock, you have only been gone for a few hours. Your monitor is showing the start screen of 
     Vindauga but you know that you have gone on enough adventures for one day. You eject the disc and put the game 
     away for another day. \n""")
-    print("""                                                 The End                                                     
-                                                                                                     Final Score: 30""")
+    print("""                                             The End                                                     
+                                                                                            Final Score:""", finalScore)
     print('\n')
     print("""'Vindauga' was developed by Harrison Zheng (Harrison.Zheng1@marist.edu), Will Dye 
     (George.Dye1@marist.edu), and Brendan Pacheco (Brendan.Pacheco1@marist.edu). Thank you for playing!""")
