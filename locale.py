@@ -105,7 +105,7 @@ class Location:
     the man says 'Very well then. But before you embark on
     this quest, you will need some supplies.' He runs to a
     nearby hut and returns moments later with a sword,
-    a shield, and a brown rucksack. Inside it are a couple
+    a shield, and a brown rucksack. Inside of it are a couple
     of canteens filled with water and half a loaf of
     bread. 'My father gave me this sword and this shield
     so that I could defend myself and all the things that

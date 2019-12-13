@@ -6,6 +6,7 @@
 
 from player import Player
 from locale import Location
+from item import Item
 
 
 def main():
