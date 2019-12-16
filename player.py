@@ -5,7 +5,7 @@ class Player:
         self.score = score
         self.location = location
         self.moves = moves
-        self.inventory = []
+        self.inventory = inventory
 
     def change_location(self, location, firstVisit, score):
         # Handles changing the player's location and score

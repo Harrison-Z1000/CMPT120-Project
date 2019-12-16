@@ -13,7 +13,8 @@ def main():
     title()
     name = input("Enter your name: ")
     player_object = Player(name, 0, "MEADOW", 0, [])
-    main_game(player_object)
+    location_object = Location("MEADOW", True, False, [])
+    main_game(player_object, location_object)
 
 
 def title():
@@ -25,8 +26,8 @@ def title():
     return
 
 
-def main_game(player_object):
-    print("Your current location is", player_object.location)
+def main_game(player_object, location_object):
+    print("\nYour current location is", player_object.location)
     while Player.moves_count(player_object, player_object.moves) <= 100:
         # Contains every location in the game
         location_list = ["MEADOW", "VILLAGE", "MOUNTAINS", "FOREST", "BUSHES",
@@ -37,7 +38,6 @@ def main_game(player_object):
         # with lowercase letters
         cmd = cmd.upper()
         if player_object.location == location_list[0]:
-            location_object = Location(location_list[0], True, False, [])
             if cmd == "BEGIN":
                 print(Location.display_description1(location_object))
                 print("When prompted, enter the command 'LOOK AROUND' to see "
@@ -46,11 +46,87 @@ def main_game(player_object):
             elif cmd == "LOOK AROUND":
                 print(Location.display_description2(location_object,
                                                     player_object.name))
+                print("Make sure to SEARCH this location and TAKE any items you find! When you are "
+                      "ready to move on, enter the command 'NEXT LOCATION'.\n")
+                continue
+            elif cmd == "SEARCH":
+                location_object.wasSearched = True
+                print("\nThere are no items in this location.\n")
+                continue
+            elif cmd == "TAKE":
+                if location_object.wasSearched:
+                    print("\nThere are no items here to take!\n")
+                    continue
+                else:
+                    print("\nYou must SEARCH the location before you can take "
+                          "any items!\n")
+                    continue
+            elif cmd == "USE":
+                print("\nThere are currently no items in your inventory!\n")
+                continue
+            elif cmd == "DROP":
+                print("\nThere are currently no items in your inventory!\n")
+                continue
+            elif cmd == "INVENTORY":
+                print("\nThere are currently no items in your inventory!\n")
+                continue
+            elif cmd == "HELP":
+                list_commands()
+                continue
+            elif cmd == "MAP":
+                game_map()
+                continue
+            elif cmd == "POINTS":
+                print("Your current score is", player_object.score, '\n')
+                continue
+            elif cmd == "QUIT":
+                early_exit(player_object.score)
+            elif cmd == "NEXT LOCATION":
                 newPlayerObject = Player.change_location(player_object,
                                                          location_list[0],
                                                          location_object.wasVisited,
                                                          player_object.score)
-                main_game(newPlayerObject)
+                location_object = Location(location_list[1], True, False, [Item.get_item(0), Item.get_item(1)])
+                main_game(newPlayerObject, location_object)
+            else:
+                print("Please enter the command 'BEGIN' to "
+                      "start the adventure!\n")
+                continue
+        elif player_object.location == location_list[1]:
+            if cmd == "WALK TO HUTS":
+                print(Location.display_description1(location_object))
+                print("When prompted, enter the command 'LOOK AROUND' to see "
+                      "what happens next!\n")
+                continue
+            elif cmd == "LOOK AROUND":
+                print(Location.display_description2(location_object,
+                                                    player_object.name))
+                print("Make sure to SEARCH this location and TAKE any items you find! When you are "
+                      "ready to move on, enter the command 'NEXT LOCATION'.\n")
+                continue
+            elif cmd == "SEARCH":
+                location_object.wasSearched = True
+                print("\nAs you walk through Vindauga, two shiny items sitting "
+                      "by a tree catch your eyes. One of them is a sword "
+                      "and the other is a shield. They may come in handy "
+                      "since you will be crossing dangerous terrains.\n")
+                continue
+            elif cmd == "TAKE":
+                if location_object.wasSearched:
+                    player_object.inventory, location_object.items = take_item(player_object.inventory, location_object.items)
+                else:
+                    print("\nYou must SEARCH the location before you can take "
+                          "any items!\n")
+                continue
+            elif cmd == "USE":
+                use_item(player_object)
+                continue
+            elif cmd == "DROP":
+                drop_item(player_object.inventory)
+                continue
+            elif cmd == "INVENTORY":
+                display_inventory(player_object.inventory)
+                continue
             elif cmd == "HELP":
                 list_commands()
                 continue
@@ -62,57 +138,46 @@ def main_game(player_object):
                 continue
             elif cmd == "QUIT":
                 early_exit(player_object.score)
-            else:
-                print("Please enter the command 'BEGIN' in order to "
-                      "start the adventure!\n")
-                continue
-        elif player_object.location == location_list[1]:
-            location_object = Location(location_list[1], True, False, [])
-            if cmd == "WALK TO HUTS":
-                print(Location.display_description1(location_object))
-                print(
-                    "When prompted, enter the command 'LOOK AROUND' to see "
-                    "what happens next!\n")
-                continue
-            elif cmd == "LOOK AROUND":
-                print(Location.display_description2(location_object,
-                                                    player_object.name))
+            elif cmd == "NEXT LOCATION":
                 newPlayerObject = Player.change_location(player_object,
                                                          location_list[1],
                                                          location_object.wasVisited,
                                                          player_object.score)
-                main_game(newPlayerObject)
-            elif cmd == "HELP":
-                list_commands()
-                continue
-            elif cmd == "MAP":
-                game_map()
-                continue
-            elif cmd == "POINTS":
-                print("Your current score is", player_object.score, '\n')
-                continue
-            elif cmd == "QUIT":
-                early_exit(player_object.score)
+                location_object = Location(location_list[2], True, False, [])
+                main_game(newPlayerObject, location_object)
             else:
-                print("Please enter the command 'WALK TO HUTS' in order to "
-                      "follow the storyline. \n")
+                print("Please enter the command 'WALK TO HUTS' to see what "
+                      "happens in this leg of the journey!\n")
                 continue
         elif player_object.location == location_list[2]:
-            location_object = Location(location_list[2], True, False, [])
             if cmd == "ASCEND MOUNTAINS":
                 print(Location.display_description1(location_object))
-                print(
-                    "When prompted, enter the command 'LOOK AROUND' to see "
-                    "what happens next!\n")
+                print("When prompted, enter the command 'LOOK AROUND' to see "
+                      "what happens next!\n")
                 continue
             elif cmd == "LOOK AROUND":
-                print(Location.display_description2(location_object,
-                                                    player_object.name))
-                newPlayerObject = Player.change_location(player_object,
-                                                         location_list[2],
-                                                         location_object.wasVisited,
-                                                         player_object.score)
-                main_game(newPlayerObject)
+                sword = Item.get_item(0)
+                swordCount = player_object.inventory.count(sword)
+                # If the player has a sword, they can win the game.
+                # Otherwise, they automatically lose.
+                if Sword > 0:
+                    print(Location.display_description2(location_object,
+                                                        player_object.name))
+                    newPlayerObject = Player.change_location(player_object,
+                                                             location_list[2],
+                                                             location_object.wasVisited,
+                                                             player_object.score)
+                    main_game(newPlayerObject)
+                else:
+                    print("""\n    Only then do you realize how tall
+    the mountains are. As you start climbing, you get the
+    feeling that you are being watched. A dark figure suddenly
+    brushes past you. A few moments later, you see a beast lunge at you
+    with its long claws and full set of razor-like teeth, making you
+    wish you had the sword the villager tried to give you earlier.
+    Unable to defend yourself, you die on the side of the mountain.
+                            GAME OVER\n""")
+                    early_exit(player_object.score)
             elif cmd == "HELP":
                 list_commands()
                 continue
@@ -287,9 +352,99 @@ def main_game(player_object):
                 continue
         else:
             print("Not a valid location.")
-    # Only runs the next 2 lines if the player makes more than 50 moves
+    # Only runs the next 2 lines if the player makes more than 100 moves
     print("Sorry, you are out of moves.")
     play_again()
+
+
+def take_item(player_inventory, location_items):
+    # Removes an item from the location and adds it to the player's inventory
+    # when they take an item
+    itemToTake = input("\nEnter the name of the item you want to take: ")
+    itemToTake = change_item_type(itemToTake)
+    location_items.remove(itemToTake)
+    player_inventory.append(itemToTake)
+    print(itemToTake.name, "has been added to your inventory!\n")
+    return player_inventory, location_items
+
+
+def use_item(player_object):
+    # Prints a statement and decreases an item's number of uses by one
+    itemToUse = input("\nEnter the name of the item you want to use: ")
+    itemToUse = change_item_type(itemToUse)
+    itemCount = player_object.inventory.count(itemToUse)
+    if itemCount > 0:
+        if player_object.location == "VILLAGE":
+            if itemToUse.name == "Sword":
+                print("\nYou take some practice swings with the sword. It "
+                      "is a little heavy but feels good in your hand.\n")
+                itemToUse.uses -= 1
+                return
+            elif itemToUse.name == "Shield":
+                print("\nYou practice defending yourself with the shield, "
+                      "and cannot help but wonder about the emblem on "
+                      "the front.\n")
+                itemToUse.uses -= 1
+                return
+            else:
+                print("That item is not in your inventory!")
+                return
+        # elif self.location == location_list[2]:
+        #
+        # elif self.location == location_list[3]:
+        #
+        # elif self.location == location_list[4]:
+        #
+        # elif self.location == location_list[5]:
+        #
+        # elif self.location == location_list[6]:
+        #
+        # elif self.location == location_list[7]:
+        #
+        else:
+            return
+    else:
+        print("That item is not in your inventory!")
+
+
+def drop_item(player_inventory):
+    # Removes an item from the player's inventory
+    itemToDrop = input("\nEnter the name of the item you want to drop: ")
+    itemToDrop = change_item_type(itemToDrop)
+    itemCount = player_inventory.count(itemToDrop)
+    if itemCount > 0:
+        player_inventory.remove(itemToDrop)
+        print(itemToDrop.name, "has been removed from your inventory!\n")
+        return player_inventory
+    else:
+        print("That item is not in your inventory!")
+
+
+def change_item_type(requestedItem):
+    # Converts an item from a string to the actual object
+    if requestedItem.upper() == "SWORD":
+        requestedItem = Item.get_item(0)
+    elif requestedItem.upper() == "SHIELD":
+        requestedItem = Item.get_item(1)
+    elif requestedItem.upper() == "BERRIES":
+        requestedItem = Item.get_item(2)
+    elif requestedItem.upper() == "FLASK":
+        requestedItem = Item.get_item(3)
+    else:
+        print("\nInvalid item name.\n")
+        return
+    return requestedItem
+
+
+def display_inventory(player_inventory):
+    # Displays every item in the player's inventory and its attributes
+    if len(player_inventory) > 0:
+        i = 0
+        while i < len(player_inventory):
+            print("Name:", player_inventory[i].name, "\tDescription:", player_inventory[i].description, "\tUses:", player_inventory[i].uses, "\n")
+            i += 1
+    else:
+        print("\nThere are currently no items in your inventory!\n")
 
 
 def list_commands():
@@ -297,7 +452,6 @@ def list_commands():
     print("""\nValid commands are:\n BEGIN\n WALK TO HUTS\n ASCEND MOUNTAINS
  REST IN CAVE\n LEAVE TENT\n KEEP WALKING\n WALK ALONG CREEK\n ENTER BARNHOUSE
  LOOK AROUND\n MAP\n POINTS\n QUIT\n""")
-    return
 
 
 def game_map():
@@ -319,7 +473,6 @@ def game_map():
        MEADOW                            |||||||||||||  |~|  ||||||||||||
      ==========                          /////////////  |~|  ////////////
                                                                            """)
-    return
 
 
 def early_exit(score):

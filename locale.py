@@ -4,7 +4,7 @@ class Location:
         self.name = name
         self.wasVisited = wasVisited
         self.wasSearched = wasSearched
-        self.items = []
+        self.items = items
 
     def display_description1(self):
         # Briefly describes each location when player first visits them
@@ -104,16 +104,11 @@ class Location:
     get back to your world. Seeing your determination,
     the man says 'Very well then. But before you embark on
     this quest, you will need some supplies.' He runs to a
-    nearby hut and returns moments later with a sword,
-    a shield, and a brown rucksack. Inside of it are a couple
-    of canteens filled with water and half a loaf of
-    bread. 'My father gave me this sword and this shield
-    so that I could defend myself and all the things that
-    I love. However, I am sure you will be doing just that
-    in the days to come so please accept this as a humble
-    gift.' Taking the rucksack and the slightly worn,
-    yet sturdy weapons in your hands, you thank him and
-    set a course for the mountains.\n""")
+    nearby hut and returns moments later with a brown rucksack.
+    Inside of it are a couple of canteens filled with water and
+    half a loaf of bread. 'Please accept this as a humble gift,
+    young one. May the spirits be with you.' Taking the rucksack, you
+    thank him and set a course for the mountains.\n""")
             return ""
         elif self.name == "MOUNTAINS":
             # Describes the player's progress in the mountains
