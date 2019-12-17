@@ -112,13 +112,9 @@ class Location:
             return ""
         elif self.name == "MOUNTAINS":
             # Describes the player's progress in the mountains
-            print("""\n    Only then do you realize how tall
-    the mountains are. As you start climbing, you get the
-    feeling that you are being watched. A dark figure suddenly
-    brushes past you. You unsheathe the sword that the villager
-    gave you just in time to slash the beast as it lunges at you
-    with its long claws and full set of razor-like teeth. You
-    figure that you should find a place to camp out for the
+            print("""\n    You unsheathe the sword you found earlier
+    in Vindauga and slash the beast just in time to save yourself.
+    You figure that you should find a place to camp out for the
     night as there will likely be more beasts hunting. You spot
     a cave not too far up and quickly climb towards it. Inside,
     you find a man not much older than yourself sitting by a
@@ -176,10 +172,11 @@ class Location:
             return ""
         elif self.name == "BUSHES":
             # Describes the player's encounter with bushes growing berries
-            print("""\n    You stumble upon a thicket of
-    bushes with red berries that resemble cherries. Svend tells
-    you that these are safe to eat, so you pick as many as you
-    can fit in your rucksack.\n""")
+            print("""\n    As the day goes by, your stomach's growls grow
+    louder and louder. You suggest to Svend that you guys find
+    something to eat. At that moment, Svend spots a cluster of short
+    vegetation in the distance. He runs towards it and you try to
+    keep up with him, yelling at him to slow down.\n""")
             return ""
         elif self.name == "CREEK":
             # Describes the player's encounter with a small stream
